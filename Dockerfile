@@ -1,8 +1,8 @@
 # Adapted from https://github.com/takehiko/docker-pgroonga/blob/2023f5d8e11c62607593c5775e207382960bb1c1/Dockerfile
 FROM postgres:10.4-alpine
 
-ENV GROONGA_VERSION=8.0.5 \
-    PGROONGA_VERSION=2.1.1
+ENV GROONGA_VERSION=8.0.6 \
+    PGROONGA_VERSION=2.1.2
 
 WORKDIR /root
 
@@ -14,19 +14,17 @@ RUN apk add --update --no-cache build-base \
     && ./configure \
     && make \
     && make install \
-    && cd ..
-
-# PGroonga
-RUN apk add --update --no-cache libstdc++ \
+    && cd .. \
+    # PGroonga
+    && apk add --update --no-cache libstdc++ \
     && wget https://packages.groonga.org/source/pgroonga/pgroonga-${PGROONGA_VERSION}.tar.gz \
     && tar xvf pgroonga-${PGROONGA_VERSION}.tar.gz \
     && cd pgroonga-${PGROONGA_VERSION} \
     && make \
     && make install \
-    && cd ..
-
-# Clean up
-RUN apk del build-base \
+    && cd .. \
+    # Clean up
+    && apk del build-base \
     && rm -rf \
         groonga-*  \
         pgroonga-* \
