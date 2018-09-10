@@ -17,8 +17,8 @@ RUN apk add --update --no-cache build-base \
     # PGroonga
     && apk add --update --no-cache libstdc++ \
     && wget https://github.com/pgroonga/pgroonga/archive/master.tar.gz \
-    && tar xvf pgroonga-${PGROONGA_VERSION}.tar.gz \
-    && cd pgroonga-${PGROONGA_VERSION} \
+    && tar xvf pgroonga-master.tar.gz \
+    && cd pgroonga-master \
     && make \
     && make install \
     && cd .. \
