@@ -15,17 +15,16 @@ RUN apk add --update --no-cache build-base \
     && make install \
     && cd .. \
     # PGroonga
-    && apk add --update --no-cache libstdc++ \
-    && wget https://github.com/pgroonga/pgroonga/archive/master.tar.gz \
-    && tar xvf pgroonga-master.tar.gz \
-    && cd pgroonga-master \
+    && apk add --update --no-cache git libstdc++ \
+    && git clone --recursive https://github.com/pgroonga/pgroonga.git \
+    && cd pgroonga \
     && make \
     && make install \
     && cd .. \
     # Clean up
-    && apk del build-base \
+    && apk del build-base git \
     && rm -rf \
         groonga-*  \
-        pgroonga-* \
+        pgroonga \
         /usr/local/share/doc/groonga \
         /usr/local/share/groonga
