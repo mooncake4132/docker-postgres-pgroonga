@@ -2,7 +2,7 @@
 FROM postgres:10.4-alpine
 
 ENV GROONGA_VERSION=8.0.6 \
-    PGROONGA_VERSION=2.1.2
+    PGROONGA_VERSION=2.1.3
 
 WORKDIR /root
 
